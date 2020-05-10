@@ -648,6 +648,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player-Unit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2246877741140902925, guid: 559820d8cda88754883b2358d0a211f8,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlayerControlled
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246877741140902925, guid: 559820d8cda88754883b2358d0a211f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2246877742362908484, guid: 559820d8cda88754883b2358d0a211f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559820d8cda88754883b2358d0a211f8, type: 3}
 --- !u!4 &1383169698 stripped
