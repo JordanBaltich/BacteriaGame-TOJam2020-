@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1406723479469461573}
   - component: {fileID: 1406723479469461572}
   - component: {fileID: 1406723479469461575}
-  - component: {fileID: 1406723479469461574}
+  - component: {fileID: 655035277008283837}
   m_Layer: 5
   m_Name: UI_HealthBar_Canvas
   m_TagString: Untagged
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1406723479469461574
+--- !u!114 &655035277008283837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

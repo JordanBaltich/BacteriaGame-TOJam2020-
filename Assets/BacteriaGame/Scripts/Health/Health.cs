@@ -17,6 +17,11 @@ public class Health : MonoBehaviour
     public GameObject currentThreat;
     public bool greaterThreatFound = false;
 
+    private void OnEnable()
+    {
+        OnHealthAdded(this);
+    }
+
     public void Heal(float healAmount)
     {
         if (currentHealth + healAmount >= maxHealth)
