@@ -14,7 +14,10 @@ public class P_IdleState : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        if (m_Controller.currentTarget != null)
+        {
+            animator.SetBool("isMoving?", true);
+        }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

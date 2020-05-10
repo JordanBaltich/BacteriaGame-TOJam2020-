@@ -8,6 +8,10 @@ public class Health : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
 
+    public float lastDamageDealt = 0;
+    public GameObject currentThreat;
+    public bool greaterThreatFound = false;
+
     public void Heal(float healAmount)
     {
         currentHealth += healAmount;
@@ -18,14 +22,22 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, GameObject attacker)
     {
+        greaterThreatFound = false;
         currentHealth -= damage;
         print(gameObject.name + "Recieved " + damage + " Damage!");
 
         if (currentHealth - damage <= 0)
         {
             currentHealth = 0;
+        }
+
+        if (damage > lastDamageDealt)
+        {
+            currentThreat = attacker;
+            lastDamageDealt = damage;
+            greaterThreatFound = true;
         }
     }
 
