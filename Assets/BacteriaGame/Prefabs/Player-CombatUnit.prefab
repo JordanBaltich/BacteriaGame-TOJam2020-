@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 9007814887264982776}
   m_Layer: 8
   m_Name: Player-CombatUnit
-  m_TagString: PlayerControlled
+  m_TagString: Bacterimen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,10 +282,12 @@ MonoBehaviour:
   m_Agent: {fileID: 0}
   m_Data: {fileID: 11400000, guid: e0d62e5d40c926e4a852be10b8fba3d7, type: 2}
   playerBody: {fileID: 547995089749779951}
+  outlineThickness: 0.1
   isSelected: 0
   Destination: {x: 0, y: 0, z: 0}
   currentTarget: {fileID: 0}
   canAttack: 1
+  blobs: []
 --- !u!114 &9007814887264982776
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,8 +12,13 @@ public class ObjectSelector : MonoBehaviour
     int layerMask2 = 1 << 10;
 
     public List<GameObject> SelectedUnits;
-
     public GameObject selectedTarget;
+
+    [SerializeField] string blobTag = "Blob";
+    [SerializeField] string bacterimenTag = "Bacterimen";
+    public List<GameObject> blobsToMerge;
+    public GameObject bacterimanPrefab;
+    [SerializeField] float distanceToMerge;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +32,8 @@ public class ObjectSelector : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hitInfo = new RaycastHit();
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, Mathf.Infinity,SelectableObjects))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, Mathf.Infinity, SelectableObjects))
             {
-                Debug.Log(hitInfo.collider.gameObject.layer);
-
-
-                Debug.Log("It's working!");
                 if (hitInfo.collider.gameObject.layer == GroundLayerID)
                 {
                     if (SelectedUnits.Count > 0)
@@ -47,7 +48,6 @@ public class ObjectSelector : MonoBehaviour
                 }
                 if (hitInfo.collider.gameObject.layer == pUnitLayerID)
                 {
-                    Debug.Log("Player Hit!");
                     if (!hitInfo.collider.GetComponent<MinionController>().isSelected)
                     {
                         hitInfo.collider.GetComponent<MinionController>().isSelected = true;
@@ -83,10 +83,37 @@ public class ObjectSelector : MonoBehaviour
                     SelectedUnits[i].GetComponent<MinionController>().isSelected = false;
                     SelectedUnits.Remove(SelectedUnits[i]);
                 }
+               
+            }
+
+            if (selectedTarget != null)
+            {
                 selectedTarget.GetComponent<AIMinionController>().isSelected = false;
                 selectedTarget = null;
             }
         }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            Split();
+            MergeUnits();
+
+        }
+
+
+        if (SelectedUnits.Count > 0)
+        {
+            SelectedUnits.RemoveAll(GameObject => GameObject == null);
+
+            for (int i = SelectedUnits.Count - 1; i > -1; i--)
+            {
+                if (!SelectedUnits[i].activeInHierarchy)
+                {
+                    SelectedUnits.Remove(SelectedUnits[i]);
+                }
+            }
+        }
+        
     }
 
     bool CheckIfSelectable(int layer)
@@ -101,5 +128,139 @@ public class ObjectSelector : MonoBehaviour
             return true;
         }
         else return false;
+    }
+
+    void MergeUnits()
+    {      
+        //find what selected units are blobs
+        if (SelectedUnits.Count >= 3)
+        {
+            blobsToMerge = new List<GameObject>();
+
+            int blobsSelected = 0;
+
+            List<GameObject> blobs = new List<GameObject>();
+
+            for (int i = 0; i < SelectedUnits.Count; i++)
+            {
+                if (SelectedUnits[i].tag == blobTag)
+                {
+                    blobsSelected++;
+                    blobs.Add(SelectedUnits[i]);
+                }
+            }
+
+            //find a group of at least 3 blobs that are close together
+
+            List<GameObject> blobsNearMe = new List<GameObject>();
+
+            RaycastHit[] hits = Physics.SphereCastAll(blobs[0].transform.position, distanceToMerge, Vector3.up / 4, pUnitLayerID);
+
+            print(hits.Length);
+
+            if (hits.Length > 0)
+            {
+                for (int ii = 0; ii < hits.Length; ii++)
+                {
+                    if (hits[ii].collider.gameObject.tag == blobTag)
+                    {
+                        blobsNearMe.Add(hits[ii].collider.gameObject);
+                    }
+                }
+                print(blobsNearMe.Count);
+            }
+
+            if (blobsNearMe.Count >= 2)
+            {
+                blobsToMerge.Add(blobs[0]);
+                for (int ii = 0; ii < blobsNearMe.Count; ii++)
+                {
+                    if(blobsNearMe[ii].transform.position != blobs[0].transform.position)
+                    blobsToMerge.Add(blobsNearMe[ii]);
+                }
+            }
+
+            // merge any group of 3 or more blobs into a combat unit
+            if (blobsToMerge.Count >= 3)
+            {
+                Vector3 centre = Vector3.zero;
+                float count = 0;
+                //find the centre point between all blobs
+                for (int k = 0; k < blobsToMerge.Count; k++)
+                {
+                    centre += blobsToMerge[k].transform.position;
+                    count++;
+                }
+
+                centre = centre / count;
+
+                GameObject newUnit = Instantiate(bacterimanPrefab, centre, Quaternion.identity);
+                MinionController newUnitContoller = newUnit.GetComponent<MinionController>();
+
+                //pass merged blobs to new unit
+                for (int j = 0; j < blobsToMerge.Count; j++)
+                {
+                    newUnitContoller.blobs.Add(blobsToMerge[j]);
+                    blobsToMerge[j].transform.parent = newUnit.transform;
+                   
+                }
+                List<int> indexsToRemove = new List<int>();
+                // find what selected blobs have been merged
+
+
+                for (int kk = 0; kk < blobsToMerge.Count; kk++)
+                {
+                    for (int i = 0; i < blobs.Count; i++)
+                    {
+                        if (blobsToMerge[kk].transform.position == blobs[i].transform.position)
+                        {
+                            indexsToRemove.Add(i);
+                            return;
+                        }
+                    }
+                }
+                // remove those blobs from list
+                for (int l = indexsToRemove.Count - 1; l > -1; l--)
+                {
+                    blobs.Remove(blobs[indexsToRemove[l]]);
+                }
+
+            }
+        }
+    }
+
+    void Split()
+    {
+        List<GameObject> bacterimen = new List<GameObject>();
+
+        for (int i = 0; i < SelectedUnits.Count; i++)
+        {
+            print(SelectedUnits[i].tag);
+            if (SelectedUnits[i].tag == bacterimenTag)
+            {
+                bacterimen.Add(SelectedUnits[i]);
+            }
+        }
+
+        print(bacterimen.Count);
+        if (bacterimen.Count > 0)
+        {
+            for (int i = 0; i < bacterimen.Count; i++)
+            {
+                List<GameObject> BlobsHeld = bacterimen[i].GetComponent<MinionController>().blobs;
+
+                bacterimen[i].GetComponent<Health>().DistributeHealth(BlobsHeld);
+
+                foreach (GameObject blob in BlobsHeld)
+                {
+                    blob.transform.parent = null;
+                    blob.SetActive(true);
+                }
+
+                Destroy(bacterimen[i]);
+            }
+
+           
+        }
     }
 }

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2246877741140902916}
   m_Layer: 8
   m_Name: Player-Unit
-  m_TagString: PlayerControlled
+  m_TagString: Blob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,10 +122,12 @@ MonoBehaviour:
   m_Agent: {fileID: 0}
   m_Data: {fileID: 11400000, guid: 46c1bf9dad49d4b419957be71b3a216a, type: 2}
   playerBody: {fileID: 8960176085991289249}
+  outlineThickness: 1.5
   isSelected: 0
   Destination: {x: 0, y: 0, z: 0}
   currentTarget: {fileID: 0}
   canAttack: 1
+  blobs: []
 --- !u!114 &2246877741140902916
 MonoBehaviour:
   m_ObjectHideFlags: 0

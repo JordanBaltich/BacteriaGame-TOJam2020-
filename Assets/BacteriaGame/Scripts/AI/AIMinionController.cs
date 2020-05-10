@@ -29,6 +29,7 @@ public class AIMinionController : MonoBehaviour
 
     private void Start()
     {
+
         m_Health.maxHealth = m_Data.maxHealth;
         m_Health.currentHealth = m_Health.maxHealth;
 
