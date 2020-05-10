@@ -88,14 +88,21 @@ public class ControlNode : MonoBehaviour
         if(spawnTimer >= spawnRate)
         {
             spawnTimer = 0;
-            if(myTeam == Team.blue)
+            Vector3 pos = Random.insideUnitSphere;
+            if(pos.magnitude < 0.5)
             {
-                GameObject unit = Instantiate(playerUnit, spawnLocation.transform.position, Quaternion.identity);
+                pos = pos.normalized * 0.5f;
+            }
+            pos *= Random.Range(1f, 6f);
+            pos = new Vector3(pos.x, 0, pos.z);
+            if (myTeam == Team.blue)
+            {
+                GameObject unit = Instantiate(playerUnit, spawnLocation.transform.position + pos, Quaternion.identity);
 
             }
             else if (myTeam == Team.red)
             {
-                GameObject unit = Instantiate(AIUnit, spawnLocation.transform.position, Quaternion.identity);
+                GameObject unit = Instantiate(AIUnit, spawnLocation.transform.position + pos, Quaternion.identity);
             }
 
         }

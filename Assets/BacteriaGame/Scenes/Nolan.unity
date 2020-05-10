@@ -1556,5 +1556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: capture node
       objectReference: {fileID: 0}
+    - target: {fileID: 6385202944178499629, guid: fb28a35822f9ddd4291dfcd51ca3029c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb28a35822f9ddd4291dfcd51ca3029c, type: 3}
