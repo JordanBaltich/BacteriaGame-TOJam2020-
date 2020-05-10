@@ -6,12 +6,14 @@ public class ObjectSelector : MonoBehaviour
 {
     public LayerMask SelectableObjects;
     public Transform Pointer;
-    [SerializeField] int GroundLayerID, pUnitLayerID;
+    [SerializeField] int GroundLayerID, pUnitLayerID, aIUnitLayerID;
 
     int layerMask = 1 << 8; //[8] is the index of player-unit
     int layerMask2 = 1 << 10;
 
     public List<GameObject> SelectedUnits;
+
+    public GameObject selectedTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,7 @@ public class ObjectSelector : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hitInfo = new RaycastHit();
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo))
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, Mathf.Infinity,SelectableObjects))
             {
                 Debug.Log(hitInfo.collider.gameObject.layer);
 
@@ -43,13 +45,25 @@ public class ObjectSelector : MonoBehaviour
                     }
 
                 }
-                if (hitInfo.collider.gameObject.tag == "PlayerControlled")
+                if (hitInfo.collider.gameObject.layer == pUnitLayerID)
                 {
                     Debug.Log("Player Hit!");
                     if (!hitInfo.collider.GetComponent<MinionController>().isSelected)
                     {
                         hitInfo.collider.GetComponent<MinionController>().isSelected = true;
                         SelectedUnits.Add(hitInfo.collider.gameObject);
+                    }
+                }
+                if (hitInfo.collider.gameObject.layer == aIUnitLayerID)
+                {
+                    if (SelectedUnits.Count > 0)
+                    {
+                        for (int i = 0; i < SelectedUnits.Count; i++)
+                        {
+                            selectedTarget = hitInfo.collider.gameObject;
+                            selectedTarget.GetComponent<AIMinionController>().isSelected = true;
+                            SelectedUnits[i].GetComponent<MinionController>().currentTarget = hitInfo.collider.gameObject;
+                        }
                     }
                 }
 
@@ -69,6 +83,8 @@ public class ObjectSelector : MonoBehaviour
                     SelectedUnits[i].GetComponent<MinionController>().isSelected = false;
                     SelectedUnits.Remove(SelectedUnits[i]);
                 }
+                selectedTarget.GetComponent<AIMinionController>().isSelected = false;
+                selectedTarget = null;
             }
         }
     }

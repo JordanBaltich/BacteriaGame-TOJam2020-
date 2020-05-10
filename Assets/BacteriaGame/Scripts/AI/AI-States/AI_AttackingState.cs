@@ -24,7 +24,7 @@ public class AI_AttackingState : StateMachineBehaviour
 
         if (m_Controller.canAttack)
         {
-            m_Vision.currentTarget.GetComponent<Health>().TakeDamage(m_Controller.m_Data.attackPower);
+            m_Vision.currentTarget.GetComponent<Health>().TakeDamage(m_Controller.m_Data.attackPower, animator.gameObject);
             m_Controller.StartCoolDownTimer();
         }
 

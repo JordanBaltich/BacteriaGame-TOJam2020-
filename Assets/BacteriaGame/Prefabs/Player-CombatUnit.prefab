@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3790240178540738564}
   - component: {fileID: 4495409779955538311}
   - component: {fileID: 8641220598972423163}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Forward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2838470450753788045}
   - component: {fileID: 1310597210145382856}
   - component: {fileID: 547995089749779951}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 9007814887264982776}
   m_Layer: 8
   m_Name: Player-CombatUnit
-  m_TagString: Untagged
+  m_TagString: PlayerControlled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,11 +281,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Agent: {fileID: 0}
   m_Data: {fileID: 11400000, guid: e0d62e5d40c926e4a852be10b8fba3d7, type: 2}
-  MoveTarget: {fileID: 0}
-  moveTargetTag: MoveTarget
   playerBody: {fileID: 547995089749779951}
   isSelected: 0
   Destination: {x: 0, y: 0, z: 0}
+  currentTarget: {fileID: 0}
+  canAttack: 1
 --- !u!114 &9007814887264982776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,8 +295,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9007814887264982769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f2a375f9113ea4469cab302cb440683, type: 3}
+  m_Script: {fileID: 11500000, guid: 31369b4a46b6119498571e9b46ecfda5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  lastDamageDealt: 0
+  currentThreat: {fileID: 0}
+  greaterThreatFound: 0

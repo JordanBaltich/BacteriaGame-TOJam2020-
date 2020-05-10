@@ -11,16 +11,16 @@ public class MinionController : MonoBehaviour
     public NavMeshAgent m_Agent;
     public MinionData m_Data;
 
-    [Header("Movement")]
-    public Transform MoveTarget;
-    [SerializeField] string moveTargetTag = "MoveTarget";
-
     [SerializeField] MeshRenderer playerBody;
-    Shader OutlineShader;
+    [SerializeField] float outlineThickness;
 
     public bool isSelected = false;
 
     public Vector3 Destination;
+
+    public GameObject currentTarget;
+
+    public bool canAttack = true;
 
     private void Awake()
     {
@@ -32,8 +32,6 @@ public class MinionController : MonoBehaviour
 
     private void Start()
     {
-       MoveTarget = GameObject.FindGameObjectWithTag(moveTargetTag).transform;
-
         m_Health.maxHealth = m_Data.maxHealth;
         m_Health.currentHealth = m_Health.maxHealth;
 
@@ -47,11 +45,38 @@ public class MinionController : MonoBehaviour
     {
         if (isSelected)
         {
-            playerBody.material.SetFloat("_OutlineWidth", 0.1f);
+            playerBody.material.SetFloat("_OutlineWidth", outlineThickness);
         }
         else
         {
             playerBody.material.SetFloat("_OutlineWidth", 0.0f);
         }
+
+        if (currentTarget != null)
+        {
+            Destination = currentTarget.transform.position;
+
+            if (m_Health.greaterThreatFound)
+            {
+                currentTarget = m_Health.currentThreat;
+                m_Health.greaterThreatFound = false;
+            }
+
+        }
+    }
+
+    public void StartCoolDownTimer()
+    {
+        StartCoroutine(AttackCooldownTimer());
+    }
+
+    IEnumerator AttackCooldownTimer()
+    {
+        canAttack = false;
+        print(gameObject.name + " in cooldown");
+
+        yield return new WaitForSeconds(m_Data.attackCooldown);
+
+        canAttack = true;
     }
 }
