@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/BacteriaGame/Scenes/MainMenu.unity
+    guid: a3b950a9ccc6aa345b7eb2cc65ef7875
+  - enabled: 1
+    path: Assets/BacteriaGame/Scenes/Game/MainGame.unity
+    guid: 0617a57848526dd4698cd63ba4c0d31f
   m_configObjects: {}
