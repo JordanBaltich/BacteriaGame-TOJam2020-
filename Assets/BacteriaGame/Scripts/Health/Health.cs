@@ -8,79 +8,44 @@ public class Health : MonoBehaviour
     public static event Action<Health> OnHealthAdded = delegate { };
     public static event Action<Health> OnHealthRemoved = delegate { };
 
-    [SerializeField]
-    MinionData unitData;
-
     public event Action<float> OnHealthPctChanged = delegate { };
 
     public float maxHealth;
     public float currentHealth;
 
-    private void OnEnable()
-    {
-        currentHealth = unitData.maxHealth;
-        OnHealthAdded(this);
-    }
-
-    public void FindUnitType()
-    {
-        if (GetComponent<MinionController>() != null)
-        {
-            unitData = GetComponent<MinionController>().m_Data;
-            print("I am a Player Unit!");
-        }
-        if (GetComponent<AIMinionController>() != null)
-        {
-            unitData = GetComponent<AIMinionController>().m_Data;
-            print("I am an AI Unit!");
-        }
-    }
+    public float lastDamageDealt = 0;
+    public GameObject currentThreat;
+    public bool greaterThreatFound = false;
 
     public void Heal(float healAmount)
     {
-        if (currentHealth + healAmount >= unitData.maxHealth)
-            currentHealth = unitData.maxHealth;
+        if (currentHealth + healAmount >= maxHealth)
+            currentHealth = maxHealth;
         else
             currentHealth += healAmount;
 
         //runs UI health percentage change script
-        float currentHealthPct = currentHealth / unitData.maxHealth;
+        float currentHealthPct = currentHealth / maxHealth;
         OnHealthPctChanged(currentHealthPct);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, GameObject attacker)
     {
-        print("I made it here");
-        if (unitData != null)
-        {
-            if (currentHealth - damage <= 0)
-                currentHealth = 0;
-             
-            else
-                currentHealth -= damage;
-            
+        greaterThreatFound = false;
+        print(gameObject.name + "Recieved " + damage + " Damage!");
 
-            print(gameObject.name + "Recieved " + damage + " Damage!");
+        if (currentHealth - damage <= 0)
+            currentHealth = 0;
 
-            
-            //runs UI health percentage change script
-            float currentHealthPct = currentHealth / unitData.maxHealth;
-            OnHealthPctChanged(currentHealthPct);
-        }
         else
+            currentHealth -= damage;
+
+        if (damage > lastDamageDealt)
         {
-            print("unit data could not be found");
-        }    
-    }
-
-    //testing healthloss and gain effects
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            TakeDamage(10);
-
-        if (Input.GetKeyDown(KeyCode.U))
-            Heal(10);
+            currentThreat = attacker;
+            lastDamageDealt = damage;
+            greaterThreatFound = true;
+        }
     }
 
     public void GetTotalHealthPool(List<GameObject> blobs)
@@ -103,9 +68,8 @@ public class Health : MonoBehaviour
         }
     }
 
-
     private void OnDisable()
     {
-        OnHealthRemoved(this);   
+        OnHealthRemoved(this);
     }
 }

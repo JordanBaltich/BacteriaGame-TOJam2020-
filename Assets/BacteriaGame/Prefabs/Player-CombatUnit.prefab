@@ -281,11 +281,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Agent: {fileID: 0}
   m_Data: {fileID: 11400000, guid: e0d62e5d40c926e4a852be10b8fba3d7, type: 2}
-  MoveTarget: {fileID: 0}
-  moveTargetTag: MoveTarget
   playerBody: {fileID: 547995089749779951}
   isSelected: 0
   Destination: {x: 0, y: 0, z: 0}
+  currentTarget: {fileID: 0}
+  canAttack: 1
 --- !u!114 &9007814887264982776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,8 +295,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9007814887264982769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f2a375f9113ea4469cab302cb440683, type: 3}
+  m_Script: {fileID: 11500000, guid: 31369b4a46b6119498571e9b46ecfda5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
+  lastDamageDealt: 0
+  currentThreat: {fileID: 0}
+  greaterThreatFound: 0
