@@ -19,8 +19,8 @@ TagManager:
   - PlayerUnit
   - AIUnit
   - Ground
-  - 
-  - 
+  - Selector
+  - Vision
   - 
   - 
   - 

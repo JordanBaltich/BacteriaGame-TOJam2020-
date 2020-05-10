@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 1269676594}
   - component: {fileID: 1269676593}
   - component: {fileID: 1269676596}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -436,11 +436,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelectableObjects:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 3873
   Pointer: {fileID: 1024066504}
   GroundLayerID: 10
   pUnitLayerID: 8
+  aIUnitLayerID: 9
   SelectedUnits: []
+  selectedTarget: {fileID: 0}
 --- !u!1 &1312729616
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,26 +673,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1404266607, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404266607, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404266607, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404266607, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404266607, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5226840741739661994, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -746,45 +728,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5226840741739661994, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5226840741739661994, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5226840741739661996, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb,
         type: 3}
       propertyPath: m_Name
       value: AI-Unit
-      objectReference: {fileID: 0}
-    - target: {fileID: 5226840741739661996, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5226840741821401787, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb,
         type: 3}
       propertyPath: ControlPointsHolder
       value: 
       objectReference: {fileID: 1345164102}
-    - target: {fileID: 5226840741821401787, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb,
-        type: 3}
-      propertyPath: distanceWindow
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5226840741821401787, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb,
-        type: 3}
-      propertyPath: playerUnitsMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     - target: {fileID: 5226840741821401790, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb, type: 3}

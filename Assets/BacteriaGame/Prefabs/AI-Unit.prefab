@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1404266607}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ForwardTarget
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 5226840741461261584}
   - component: {fileID: 5226840741461261586}
   - component: {fileID: 5226840741461261587}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 5226840741739661993}
   - component: {fileID: 5226840741739661998}
   - component: {fileID: 5226840741739661999}
+  - component: {fileID: 1655356843}
   m_Layer: 9
   m_Name: AI-Unit
   m_TagString: AIControl
@@ -232,6 +233,26 @@ MonoBehaviour:
   m_Agent: {fileID: 0}
   m_Data: {fileID: 11400000, guid: d675dc00882839a4fb4f5867d0f37de8, type: 2}
   forwardTarget: {fileID: 1404266607}
+  AIBody: {fileID: 5226840742531934566}
+  canAttack: 0
+  isSelected: 0
+--- !u!114 &1655356843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226840741739661996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2a375f9113ea4469cab302cb440683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  lastDamageDealt: 0
+  currentThreat: {fileID: 0}
+  greaterThreatFound: 0
 --- !u!1 &5226840741821401790
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +264,7 @@ GameObject:
   - component: {fileID: 5226840741821401785}
   - component: {fileID: 5226840741821401784}
   - component: {fileID: 5226840741821401787}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +320,10 @@ MonoBehaviour:
   playerControlTag: PlayerControl
   controlPoints: []
   noPlayerMinionInSight: 1
+  distanceWindow: 1
   currentTarget: {fileID: 0}
+  unitsInSight: []
+  possibleTargets: []
 --- !u!1 &5226840742531934564
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +335,7 @@ GameObject:
   - component: {fileID: 5226840742531934567}
   - component: {fileID: 5226840742531934561}
   - component: {fileID: 5226840742531934566}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: AIControl
   m_Icon: {fileID: 0}
