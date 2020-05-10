@@ -5,6 +5,8 @@ using UnityEngine;
 public class ControlNode : MonoBehaviour
 {
 
+    public float spawnRate = 1f;
+
     public float completionStatus = 0;
     public enum Team { blue, red, neutral, unassigned }
 
@@ -25,6 +27,11 @@ public class ControlNode : MonoBehaviour
     public MeshRenderer[] myalphaMeshRenderers;
 
     public GameObject progressDiscGO;
+
+    float spawnTimer = 0;
+    public GameObject AIUnit;
+    public GameObject playerUnit;
+    public GameObject spawnLocation;
 
     void Start()
     {
@@ -75,6 +82,22 @@ public class ControlNode : MonoBehaviour
                 meshrenderer.material = alphaMats[1];
                 tag = "AIControl";
             }
+        }
+
+        spawnTimer += Time.deltaTime;
+        if(spawnTimer >= spawnRate)
+        {
+            spawnTimer = 0;
+            if(myTeam == Team.blue)
+            {
+                GameObject unit = Instantiate(playerUnit, spawnLocation.transform.position, Quaternion.identity);
+
+            }
+            else if (myTeam == Team.red)
+            {
+                GameObject unit = Instantiate(AIUnit, spawnLocation.transform.position, Quaternion.identity);
+            }
+
         }
     }
 
