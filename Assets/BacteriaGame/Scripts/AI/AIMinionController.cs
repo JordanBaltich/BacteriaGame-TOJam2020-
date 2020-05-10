@@ -13,6 +13,7 @@ public class AIMinionController : MonoBehaviour
     public MinionData m_Data;
     public Transform forwardTarget;
     [SerializeField] MeshRenderer AIBody;
+    [SerializeField] float outlineThickness;
 
     public bool canAttack;
     public bool isSelected;
@@ -52,7 +53,7 @@ public class AIMinionController : MonoBehaviour
 
         if (isSelected)
         {
-            AIBody.material.SetFloat("_OutlineWidth", 0.1f);
+            AIBody.material.SetFloat("_OutlineWidth", outlineThickness);
         }
         else
         {

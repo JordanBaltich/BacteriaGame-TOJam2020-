@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3790240178540738564}
   - component: {fileID: 4495409779955538311}
   - component: {fileID: 8641220598972423163}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Forward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2838470450753788045}
   - component: {fileID: 1310597210145382856}
   - component: {fileID: 547995089749779951}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 9007814887264982776}
   m_Layer: 8
   m_Name: Player-CombatUnit
-  m_TagString: Untagged
+  m_TagString: PlayerControlled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -588,11 +588,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1698215608}
     m_Modifications:
-    - target: {fileID: 2246877741140902919, guid: 559820d8cda88754883b2358d0a211f8,
-        type: 3}
-      propertyPath: MoveTarget
-      value: 
-      objectReference: {fileID: 1024066504}
     - target: {fileID: 2246877741140902920, guid: 559820d8cda88754883b2358d0a211f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -652,11 +647,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player-Unit (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2246877741140902925, guid: 559820d8cda88754883b2358d0a211f8,
-        type: 3}
-      propertyPath: m_TagString
-      value: PlayerControlled
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559820d8cda88754883b2358d0a211f8, type: 3}
@@ -738,11 +728,6 @@ PrefabInstance:
       propertyPath: ControlPointsHolder
       value: 
       objectReference: {fileID: 1345164102}
-    - target: {fileID: 5226840741821401790, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0ee7f9c3c88754e8f2e870ee86bdcb, type: 3}
 --- !u!1 &1698215607
@@ -970,30 +955,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1698215608}
     m_Modifications:
-    - target: {fileID: 4919235141057098257, guid: 9062bb31b3bddf14d8ee865aff8b69b4,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5434274260999553821, guid: 9062bb31b3bddf14d8ee865aff8b69b4,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9007814887264982769, guid: 9062bb31b3bddf14d8ee865aff8b69b4,
         type: 3}
       propertyPath: m_Name
       value: Player-CombatUnit
-      objectReference: {fileID: 0}
-    - target: {fileID: 9007814887264982769, guid: 9062bb31b3bddf14d8ee865aff8b69b4,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9007814887264982769, guid: 9062bb31b3bddf14d8ee865aff8b69b4,
-        type: 3}
-      propertyPath: m_TagString
-      value: PlayerControlled
       objectReference: {fileID: 0}
     - target: {fileID: 9007814887264982772, guid: 9062bb31b3bddf14d8ee865aff8b69b4,
         type: 3}
@@ -1050,10 +1015,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9007814887264982779, guid: 9062bb31b3bddf14d8ee865aff8b69b4,
-        type: 3}
-      propertyPath: MoveTarget
-      value: 
-      objectReference: {fileID: 1024066504}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9062bb31b3bddf14d8ee865aff8b69b4, type: 3}

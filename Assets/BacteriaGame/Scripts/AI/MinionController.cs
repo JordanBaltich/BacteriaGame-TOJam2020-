@@ -12,7 +12,7 @@ public class MinionController : MonoBehaviour
     public MinionData m_Data;
 
     [SerializeField] MeshRenderer playerBody;
-    Shader OutlineShader;
+    [SerializeField] float outlineThickness;
 
     public bool isSelected = false;
 
@@ -45,7 +45,7 @@ public class MinionController : MonoBehaviour
     {
         if (isSelected)
         {
-            playerBody.material.SetFloat("_OutlineWidth", 0.1f);
+            playerBody.material.SetFloat("_OutlineWidth", outlineThickness);
         }
         else
         {
