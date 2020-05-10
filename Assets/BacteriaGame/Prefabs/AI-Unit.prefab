@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Data: {fileID: 11400000, guid: d675dc00882839a4fb4f5867d0f37de8, type: 2}
   forwardTarget: {fileID: 1404266607}
   AIBody: {fileID: 7855205313029923676}
+  outlineThickness: 0.5
   canAttack: 0
   isSelected: 0
 --- !u!114 &1655356843

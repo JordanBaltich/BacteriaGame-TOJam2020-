@@ -9,6 +9,8 @@ TagManager:
   - PlayerControlled
   - PlayerControl
   - ControlTower
+  - Blob
+  - Bacterimen
   layers:
   - Default
   - TransparentFX
