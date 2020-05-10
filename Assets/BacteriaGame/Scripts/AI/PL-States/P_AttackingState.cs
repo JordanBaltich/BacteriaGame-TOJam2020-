@@ -19,7 +19,7 @@ public class P_AttackingState : StateMachineBehaviour
 
         if (m_Controller.canAttack)
         {
-            m_Controller.currentTarget.GetComponent<Health>().TakeDamage(m_Controller.m_Data.attackPower, animator.gameObject);
+            m_Controller.currentTarget.GetComponent<Health>().TakeDamage(m_Controller.m_Data.attackPower + m_Controller.blobs.Count, animator.gameObject);
             m_Controller.StartCoolDownTimer();
         }
 
