@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{e5083b34-7327-4194-898a-26615c5759df}">
+        <property name="assetPath">
+            <value>367504__sirkoto51__boss-battle-loop-2.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>77.83784580498866</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{4f0c1ed0-d6ff-4d4f-ab19-2fe8f30e9f4b}</destination>
+        </relationship>
+    </object>
+</objects>

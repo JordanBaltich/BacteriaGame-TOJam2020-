@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{39cefc7c-e8f7-4bcc-a48d-cd9f8b804aa6}">
+        <property name="assetPath">
+            <value>Split.ogg</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>0.81637188208616784</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{4f0c1ed0-d6ff-4d4f-ab19-2fe8f30e9f4b}</destination>
+        </relationship>
+    </object>
+</objects>

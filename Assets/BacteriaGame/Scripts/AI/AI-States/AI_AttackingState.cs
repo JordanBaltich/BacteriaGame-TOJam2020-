@@ -20,10 +20,19 @@ public class AI_AttackingState : StateMachineBehaviour
     {
         float distanceToTarget = Vector3.Distance(m_Controller.m_Agent.destination, animator.transform.position);
 
-        m_Controller.m_Agent.SetDestination(m_Vision.currentTarget.transform.position);
+        if (m_Vision.currentTarget != null)
+        {
+            m_Controller.m_Agent.SetDestination(m_Vision.currentTarget.transform.position);
+        }
+        else
+        {
+            animator.SetBool("TargetFound?", false);
+            animator.SetBool("isAttacking?", false);
+        }
 
         if (m_Controller.canAttack)
         {
+            animator.GetComponent<Play3DSound>().PlayAttack();
             m_Vision.currentTarget.GetComponent<Health>().TakeDamage(m_Controller.m_Data.attackPower, animator.gameObject);
             m_Controller.StartCoolDownTimer();
         }

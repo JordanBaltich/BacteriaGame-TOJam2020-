@@ -20,10 +20,12 @@ public class ObjectSelector : MonoBehaviour
     public GameObject bacterimanPrefab;
     [SerializeField] float distanceToMerge;
 
+
     // Start is called before the first frame update
     void Start()
     {
         SelectedUnits = new List<GameObject>();
+
     }
 
     // Update is called once per frame
@@ -156,7 +158,6 @@ public class ObjectSelector : MonoBehaviour
 
             RaycastHit[] hits = Physics.SphereCastAll(blobs[0].transform.position, distanceToMerge, Vector3.up / 4, pUnitLayerID);
 
-            print(hits.Length);
 
             if (hits.Length > 0)
             {
@@ -183,6 +184,7 @@ public class ObjectSelector : MonoBehaviour
             // merge any group of 3 or more blobs into a combat unit
             if (blobsToMerge.Count >= 3)
             {
+                blobsToMerge[0].GetComponent<Play3DSound>().PlayMerge();
                 Vector3 centre = Vector3.zero;
                 float count = 0;
                 //find the centre point between all blobs
@@ -245,6 +247,7 @@ public class ObjectSelector : MonoBehaviour
         print(bacterimen.Count);
         if (bacterimen.Count > 0)
         {
+            bacterimen[0].GetComponent<Play3DSound>().PlaySplit();
             for (int i = 0; i < bacterimen.Count; i++)
             {
                 List<GameObject> BlobsHeld = bacterimen[i].GetComponent<MinionController>().blobs;
@@ -260,7 +263,7 @@ public class ObjectSelector : MonoBehaviour
                 Destroy(bacterimen[i]);
             }
 
-           
+            
         }
     }
 }

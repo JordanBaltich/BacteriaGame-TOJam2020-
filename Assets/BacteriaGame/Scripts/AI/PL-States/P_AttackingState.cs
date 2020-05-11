@@ -19,6 +19,7 @@ public class P_AttackingState : StateMachineBehaviour
 
         if (m_Controller.canAttack)
         {
+            animator.GetComponent<Play3DSound>().PlayAttack();
             m_Controller.currentTarget.GetComponent<Health>().TakeDamage(m_Controller.m_Data.attackPower + m_Controller.blobs.Count, animator.gameObject);
             m_Controller.StartCoolDownTimer();
         }

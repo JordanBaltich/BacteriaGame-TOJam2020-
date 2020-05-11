@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 5226840741739661998}
   - component: {fileID: 5226840741739661999}
   - component: {fileID: 1655356843}
+  - component: {fileID: 10739762236217094}
   m_Layer: 9
   m_Name: AI-Unit
   m_TagString: AIControl
@@ -175,6 +176,25 @@ MonoBehaviour:
   lastDamageDealt: 0
   currentThreat: {fileID: 0}
   greaterThreatFound: 0
+--- !u!114 &10739762236217094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226840741739661996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fac11ccb3e739f40ab339c2e85c1dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: event:/Attack
+  merge: event:/Merge
+  split: event:/Split
+  dead: event:/AI-Dead
+  hurt: event:/Hurt
+  captured: event:/Captured
+  lost: event:/Lost
 --- !u!1 &5226840741821401790
 GameObject:
   m_ObjectHideFlags: 0

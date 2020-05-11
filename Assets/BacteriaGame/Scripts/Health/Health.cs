@@ -40,8 +40,10 @@ public class Health : MonoBehaviour
         print(gameObject.name + "Recieved " + damage + " Damage!");
 
         if (currentHealth - damage <= 0)
+        {
             currentHealth = 0;
-
+            Dead();
+        }
         else
             currentHealth -= damage;
 
@@ -51,6 +53,9 @@ public class Health : MonoBehaviour
             lastDamageDealt = damage;
             greaterThreatFound = true;
         }
+
+        if(gameObject.tag != "Blob")
+        GetComponent<Play3DSound>().PlayHurt();
     }
 
     public void GetTotalHealthPool(List<GameObject> blobs)
@@ -76,5 +81,12 @@ public class Health : MonoBehaviour
     private void OnDisable()
     {
         OnHealthRemoved(this);
+    }
+
+    void Dead()
+    {
+        GetComponent<Play3DSound>().PlayDead();
+
+        Destroy(gameObject);
     }
 }

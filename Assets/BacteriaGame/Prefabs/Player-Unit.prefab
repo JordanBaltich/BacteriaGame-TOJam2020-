@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2246877741140902921}
   - component: {fileID: 2246877741140902919}
   - component: {fileID: 2246877741140902916}
+  - component: {fileID: 4748828651006821549}
   m_Layer: 8
   m_Name: Player-Unit
   m_TagString: Blob
@@ -145,6 +146,25 @@ MonoBehaviour:
   lastDamageDealt: 0
   currentThreat: {fileID: 0}
   greaterThreatFound: 0
+--- !u!114 &4748828651006821549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2246877741140902925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fac11ccb3e739f40ab339c2e85c1dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: event:/Attack
+  merge: event:/Merge
+  split: event:/Split
+  dead: event:/Blob-Dead
+  hurt: event:/Hurt
+  captured: event:/Captured
+  lost: event:/Lost
 --- !u!1001 &1286337342679661858
 PrefabInstance:
   m_ObjectHideFlags: 0

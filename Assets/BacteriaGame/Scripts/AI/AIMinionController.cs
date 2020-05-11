@@ -48,6 +48,7 @@ public class AIMinionController : MonoBehaviour
             if (m_Health.greaterThreatFound)
             {
                 m_Vision.currentTarget = m_Health.currentThreat;
+                m_Agent.SetDestination(m_Vision.currentTarget.transform.position);
                 m_Health.greaterThreatFound = false;
             }
         }
